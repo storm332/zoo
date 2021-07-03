@@ -1,5 +1,8 @@
 import it.vv.zoo.animal.Lion;
+import it.vv.zoo.animal.Quokka;
 import it.vv.zoo.animal.Sex;
+
+import java.sql.SQLOutput;
 
 public class Zoo {
 
@@ -17,13 +20,19 @@ public class Zoo {
         // Riempi il magazzino
 
         // Riempi le gabbie
-        Lion anacleto = new Lion(1, "anacleto");
-        Lion palmiera = new Lion(2, "palmiera");
+        Lion uno = new Lion(1);
+        Lion due = new Lion(2);
+        Lion tre = new Lion(3);
+        Quokka quattro = new Quokka(4);
 
-        System.out.println("è arrivato un leone: " + anacleto);
-        System.out.println("Anacleto dice: " + anacleto.speak());
-        System.out.println("è arrivato un leone: " + palmiera);
-        System.out.println("Palmiera dice: " + palmiera.speak());
+        System.out.println("è arrivato un leone: " + uno);
+        System.out.println(uno.name + " dice: " + uno.speak());
+        System.out.println("è arrivato un leone: " + due);
+        System.out.println(due.name + " dice: " + due.speak());
+        System.out.println("é arrivato un leone : " + tre);
+        System.out.println(tre.name + " dice: " + tre.speak());
+        System.out.println("é arrivato un quokka : " + quattro);
+        System.out.println(quattro.name + " dice: " + quattro.speak());
 
 
         // Assumi personale
