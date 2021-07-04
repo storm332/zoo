@@ -1,10 +1,15 @@
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+import org.apache.commons.lang3.stream.Streams;
+
 import it.vv.zoo.animal.Lion;
 import it.vv.zoo.animal.Quokka;
-import it.vv.zoo.animal.Sex;
-
-import java.sql.SQLOutput;
 
 public class Zoo {
+
+    private static int NUMBER_OF_LIONS = 10;
+    private static int NUMBER_OF_QUOKKA = 3;
 
     public static void main(String[] args) {
 
@@ -20,19 +25,17 @@ public class Zoo {
         // Riempi il magazzino
 
         // Riempi le gabbie
-        Lion uno = new Lion(1);
-        Lion due = new Lion(2);
-        Lion tre = new Lion(3);
-        Quokka quattro = new Quokka(4);
+        IntStream.range(1, NUMBER_OF_LIONS + 1).forEach(id -> {
+            Lion lion = new Lion(id);
+            System.out.println("E' arrivato un Leone: " + lion);
+            System.out.println(lion.name + " dice: " + lion.speak());
+        });
 
-        System.out.println("è arrivato un leone: " + uno);
-        System.out.println(uno.name + " dice: " + uno.speak());
-        System.out.println("è arrivato un leone: " + due);
-        System.out.println(due.name + " dice: " + due.speak());
-        System.out.println("é arrivato un leone : " + tre);
-        System.out.println(tre.name + " dice: " + tre.speak());
-        System.out.println("é arrivato un quokka : " + quattro);
-        System.out.println(quattro.name + " dice: " + quattro.speak());
+        for (int id = 1; id <= NUMBER_OF_QUOKKA; id++) {
+            Quokka quokka = new Quokka(id);
+            System.out.println("E' arrivato un Quokka: " + quokka);
+            System.out.println(quokka.name + " dice: " + quokka.speak());
+        }
 
 
         // Assumi personale
