@@ -1,15 +1,15 @@
 package it.vv.zoo.animal;
 
+import it.vv.zoo.food.FoodType;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.List;
 import java.util.Random;
 
 public class Quokka extends Animal{
 
     private static String[] MALE_NAMES ={"gustavo", "piero", "alfonso",};
     private static String[] FEMALE_NAMES ={"zoe", "greta", "barbara" };
-
-
 
     public Quokka(int id) {
         super(id, "default");
@@ -26,6 +26,11 @@ public class Quokka extends Animal{
             this.position = Position.LAID;
         }
         return this.position;
+    }
+
+    @Override
+    public List<FoodType> canEat() {
+        return List.of(FoodType.VEGETABLES, FoodType.FRUIT);
     }
 
     @Override

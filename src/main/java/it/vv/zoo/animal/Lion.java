@@ -1,7 +1,9 @@
 package it.vv.zoo.animal;
 
+import it.vv.zoo.food.FoodType;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.List;
 import java.util.Random;
 
 public class Lion extends Animal {
@@ -11,6 +13,7 @@ public class Lion extends Animal {
 
 
    public int aggressivity = 0; // livello di aggressività
+
 
    public Lion(int id) {
       super(id, "temp");
@@ -39,6 +42,13 @@ public class Lion extends Animal {
 
    @Override
    public Position move() {
+
+      if (health == 0) {
+         this.position = Position.LAID;
+         System.out.println("This animal is tired!!");
+         return this.position;
+      }
+
       if (this.position == Position.STAND) {
          this.position = Position.SIT;
       } else if (this.position == Position.SIT) {
@@ -49,7 +59,18 @@ public class Lion extends Animal {
          this.position = Position.STAND;
       }
 
+      this.health = this.health - HEALTH_PER_MOVEMENT;
+
+      if (this.health < 0) {
+         this.health = 0;
+      }
+
       return this.position;
+   }
+
+   @Override
+   public List<FoodType> canEat() {
+      return List.of(FoodType.MEAT, FoodType.FISH);
    }
 
    @Override
@@ -61,8 +82,11 @@ public class Lion extends Animal {
               ", sex=" + sex +
               ", size=" + size +
               ", aggressivity=" + aggressivity +
+              ", health=" + health +
               '}';
    }
+
+
 }
 
 
