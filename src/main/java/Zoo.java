@@ -1,6 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import it.vv.zoo.animal.Animal;
+import it.vv.zoo.animal.Sex;
+import it.vv.zoo.structure.Cage;
+import it.vv.zoo.structure.Material;
 import org.apache.commons.lang3.stream.Streams;
 
 import it.vv.zoo.animal.Lion;
@@ -24,19 +30,33 @@ public class Zoo {
 
         // Riempi il magazzino
 
+        List<Animal> animals = new ArrayList<>();
+        Cage lionsCage = new Cage(10,10,100, Material.IRON);
+
         // Riempi le gabbie
         IntStream.range(1, NUMBER_OF_LIONS + 1).forEach(id -> {
-            Lion lion = new Lion(id);
-            System.out.println("E' arrivato un Leone: " + lion);
-            System.out.println(lion.name + " dice: " + lion.speak());
+            Animal lion = new Lion(id);
+            animals.add(lion);
+            lionsCage.addAnimal(lion);
         });
 
         for (int id = 1; id <= NUMBER_OF_QUOKKA; id++) {
-            Quokka quokka = new Quokka(id);
-            System.out.println("E' arrivato un Quokka: " + quokka);
-            System.out.println(quokka.name + " dice: " + quokka.speak());
+            animals.add(new Quokka(id));
         }
 
+        animals.forEach(animal -> {
+            System.out.println("E' arrivato un " + animal.getClass().getSimpleName() + " => " + animal);
+            System.out.println(animal.name + " dice " + animal.speak());
+        });
+
+
+        Animal esempio = animals.get(0);
+        for (int i = 0; i < 10; i++) {
+            System.out.println("l'animale " + esempio.name + " è in posizione " + esempio.move());
+        }
+
+        // chi c'e' nella gabbia dei leoni?
+        System.out.println(lionsCage);
 
         // Assumi personale
 
